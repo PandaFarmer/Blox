@@ -27,14 +27,14 @@ The package consists of multiple addons, each with different features:
 
 * [netfox]
   * The core package, implements timing, rollback and other multiplayer
-    features
+	features
   * *Start here*
 * [netfox.noray]
   * Implements [noray] integration to establish connection between players
   * *Useful for online games*
 * [netfox.extras]
   * Provides high-level, game-specific, convenience features built on top of
-    netfox, like base classes for input management or weapons
+	netfox, like base classes for input management or weapons
   * *Check for reusable components for your game*
 * [netfox.internals]
   * Shared utilities for the other addons
