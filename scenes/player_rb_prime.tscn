@@ -1,0 +1,83 @@
+[gd_scene load_steps=12 format=3 uid="uid://db41oixlti6cj"]
+
+[ext_resource type="Script" uid="uid://capmbbq2v54ei" path="res://scripts_prime/player_prime.gd" id="1_q3tu6"]
+[ext_resource type="Script" path="res://addons/netfox.extras/physics/network-rigid-body-3d.gd" id="2_o7y8p"]
+[ext_resource type="Script" path="res://addons/netfox/rollback/rollback-synchronizer.gd" id="3_s110j"]
+[ext_resource type="PackedScene" uid="uid://621d5m2gq1h5" path="res://models/BlocManz.glb" id="5_4mcit"]
+[ext_resource type="Script" uid="uid://c6qhw72f3ldoy" path="res://scripts_prime/player_input_prime.gd" id="5_q3tu6"]
+[ext_resource type="Script" path="res://addons/netfox/tick-interpolator.gd" id="6_0ffta"]
+[ext_resource type="Script" path="res://addons/netfox.extras/base-net-input.gd" id="7_oos72"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3tu6"]
+size = Vector3(0.55, 0.9, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o7y8p"]
+size = Vector3(0.2, 0.6, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oos72"]
+size = Vector3(0.3, 0.7, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s110j"]
+size = Vector3(0.4, 0.55, 0.4)
+
+[node name="Player" type="RigidBody3D"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_q3tu6")
+metadata/_custom_type_script = ExtResource("2_o7y8p")
+
+[node name="RollbackSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("3_s110j")
+root = NodePath("..")
+state_properties = Array[String]([":physics_state"])
+input_properties = Array[String](["Input:motion"])
+
+[node name="DisplayNameLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8478, 0)
+visible = false
+billboard = 1
+shaded = true
+no_depth_test = true
+text = "Test
+"
+font_size = 60
+
+[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("6_0ffta")
+root = NodePath("..")
+properties = Array[String]([":global_transform"])
+metadata/_custom_type_script = ExtResource("6_0ffta")
+
+[node name="BlocManz_model" parent="." instance=ExtResource("5_4mcit")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 0, -0.28, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.148128, 0)
+shape = SubResource("BoxShape3D_q3tu6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.106663, -0.371988, 0)
+shape = SubResource("BoxShape3D_o7y8p")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.103337, -0.371988, 0)
+shape = SubResource("BoxShape3D_o7y8p")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.27594, 0.215732, 0)
+shape = SubResource("BoxShape3D_oos72")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.272761, 0.215732, 0)
+shape = SubResource("BoxShape3D_oos72")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.642884, 0)
+shape = SubResource("BoxShape3D_s110j")
+
+[node name="Input" type="Node" parent="."]
+script = ExtResource("5_q3tu6")
+metadata/_custom_type_script = ExtResource("7_oos72")
+
+[node name="HUD" type="CanvasGroup" parent="."]

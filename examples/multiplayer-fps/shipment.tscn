@@ -1,11 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://c4k1d2brp10fy"]
+[gd_scene load_steps=16 format=3 uid="uid://c4k1d2brp10fy"]
 
-[ext_resource type="Script" uid="uid://ck0mw5k4u8cbc" path="res://scripts_prime/main_prime.gd" id="1_h0353"]
-[ext_resource type="Script" uid="uid://wr5ur5dqrkni" path="res://addons/netfox.extras/physics/godot_driver_3d.gd" id="2_o3sla"]
-[ext_resource type="Script" path="res://scripts/ui_info.gd" id="4_lsjrh"]
 [ext_resource type="PackedScene" uid="uid://u33v8symfbrp" path="res://scenes/field.tscn" id="5_xvqs1"]
 [ext_resource type="PackedScene" uid="uid://bg5hxbj5ib07n" path="res://scenes/goal.tscn" id="6_7j0bx"]
-[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="7_uhrpg"]
 [ext_resource type="PackedScene" uid="uid://dvvbmli7e5te" path="res://scene_assets/shipment_closed_red.tscn" id="7_xvqs1"]
 [ext_resource type="PackedScene" uid="uid://dn375nyvadlq0" path="res://scene_assets/shipment_tri_blue.tscn" id="8_7j0bx"]
 [ext_resource type="PackedScene" uid="uid://1612cwfumcg3" path="res://scene_assets/shipment_closed_blue.tscn" id="9_uhrpg"]
@@ -16,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://tisqeyg4udar" path="res://scene_assets/BustedCar.tscn" id="14_y50q8"]
 [ext_resource type="PackedScene" uid="uid://b6uyr2d46u6mb" path="res://scene_assets/Dumpster.tscn" id="15_sq5p7"]
 [ext_resource type="PackedScene" uid="uid://cshsi0l1mh5ns" path="res://models/CrateBase.glb" id="16_5sock"]
-[ext_resource type="PackedScene" uid="uid://wpe3f8ghfyd6" path="res://scene_assets/SpawnPoint.tscn" id="17_p7aro"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bmvr6"]
 sky_top_color = Color(0.509202, 0.628864, 1, 1)
@@ -32,34 +27,9 @@ tonemap_mode = 1
 glow_enabled = true
 
 [node name="World" type="Node3D"]
-script = ExtResource("1_h0353")
-
-[node name="PhysicsDriver3D" type="Node" parent="."]
-script = ExtResource("2_o3sla")
-metadata/_custom_type_script = ExtResource("2_o3sla")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nnriw")
-
-[node name="Players" type="Node" parent="."]
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://stkxyqefx03l", "uid://rbhb1te77y2d")
-spawn_path = NodePath("../Players")
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 363.0
-offset_bottom = 363.0
-
-[node name="info" type="Label" parent="UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Info
-"
-script = ExtResource("4_lsjrh")
 
 [node name="field" parent="." instance=ExtResource("5_xvqs1")]
 transform = Transform3D(0.4, 0, 0, 0, 1, 0, 0, 0, 0.25, 0, 0, 0)
@@ -104,10 +74,6 @@ omni_range = 33.2662
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 49.8719, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 18, 7)
-script = ExtResource("7_uhrpg")
 
 [node name="ShipmentClosedRed" parent="." instance=ExtResource("7_xvqs1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -10.005)
@@ -285,17 +251,3 @@ transform = Transform3D(0.183262, -0.3622, 0.913907, 0.892287, 0.451469, -1.6490
 
 [node name="CrateBase5" parent="." instance=ExtResource("16_5sock")]
 transform = Transform3D(0.451465, -0.892279, 0.00420617, 0.892287, 0.451469, -8.14737e-09, -0.00189903, 0.00375332, 0.999991, 15.2064, 0.940948, -5.42792)
-
-[node name="SpawnPoints" type="Node3D" parent="."]
-
-[node name="SpawnPoint" parent="SpawnPoints" instance=ExtResource("17_p7aro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, 13)
-
-[node name="SpawnPoint2" parent="SpawnPoints" instance=ExtResource("17_p7aro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, 11)
-
-[node name="SpawnPoint3" parent="SpawnPoints" instance=ExtResource("17_p7aro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -11)
-
-[node name="SpawnPoint4" parent="SpawnPoints" instance=ExtResource("17_p7aro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, -9)

@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfexjm3mh7ypa"]
+
+[ext_resource type="Script" uid="uid://b7dcdxh4qdxwv" path="res://examples/multiplayer-fps/scripts/player-spawner.gd" id="1_do121"]
+[ext_resource type="PackedScene" uid="uid://vrso6qncj1nm" path="res://examples/multiplayer-fps/characters/player.tscn" id="2_s1frr"]
+[ext_resource type="PackedScene" uid="uid://badtpsxn5lago" path="res://examples/shared/ui/network-popup.tscn" id="3_2q5ly"]
+[ext_resource type="Script" uid="uid://c3eokqjyc0bee" path="res://examples/shared/scripts/simple-time-display.gd" id="4_2dr4g"]
+[ext_resource type="PackedScene" uid="uid://c4k1d2brp10fy" path="res://examples/multiplayer-fps/shipment.tscn" id="5_s1frr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m76yx"]
+
+[sub_resource type="Sky" id="Sky_e76ss"]
+sky_material = SubResource("ProceduralSkyMaterial_m76yx")
+
+[sub_resource type="Environment" id="Environment_xhc6u"]
+background_mode = 2
+sky = SubResource("Sky_e76ss")
+
+[node name="multiplayer-fps" type="Node"]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.5, 0.612372, -0.612372, 0, 0.707107, 0.707107, 0.866025, -0.353553, 0.353553, -6.7361, 8.77817, 3.88909)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 14.3564, 8.86602)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_xhc6u")
+
+[node name="Network" type="Node" parent="."]
+
+[node name="Player Spawner" type="Node" parent="Network" node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("1_do121")
+player_scene = ExtResource("2_s1frr")
+spawn_points = [NodePath("../../Spawn Points/Marker3D"), NodePath("../../Spawn Points/Marker3D2"), NodePath("../../Spawn Points/Marker3D3"), NodePath("../../Spawn Points/Marker3D4"), NodePath("../../Spawn Points/Marker3D5")]
+
+[node name="Players" type="Node" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Network Popup" parent="UI" instance=ExtResource("3_2q5ly")]
+layout_mode = 1
+current_tab = 0
+
+[node name="Time Display" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("4_2dr4g")
+
+[node name="Map" type="Node" parent="."]
+
+[node name="World" parent="Map" instance=ExtResource("5_s1frr")]
+script = null
+
+[node name="Spawn Points" type="Node" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="Spawn Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7111, 1, 10.4338)
+
+[node name="Marker3D2" type="Marker3D" parent="Spawn Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9192, 1, -4.26225)
+
+[node name="Marker3D3" type="Marker3D" parent="Spawn Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82951, 1, 14.927)
+
+[node name="Marker3D4" type="Marker3D" parent="Spawn Points"]
+transform = Transform3D(0.851416, -0.524491, 0, 0.524491, 0.851416, 0, 0, 0, 1, -2.62507, 1, -14.1012)
+
+[node name="Marker3D5" type="Marker3D" parent="Spawn Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5571, 1, -2.7131)
