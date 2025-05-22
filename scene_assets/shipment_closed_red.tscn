@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvvbmli7e5te"]
+
+[ext_resource type="PackedScene" uid="uid://byo63v4h1mkq8" path="res://models/shipment_closed_red.glb" id="1_33bwq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4kdd"]
+size = Vector3(5.45, 2, 2)
+
+[node name="ShipmentClosedRed" type="StaticBody3D"]
+
+[node name="shipment_closed_red2" parent="." instance=ExtResource("1_33bwq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_x4kdd")

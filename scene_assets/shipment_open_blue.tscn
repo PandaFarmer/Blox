@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqu12dyyorb1"]
+
+[ext_resource type="PackedScene" uid="uid://b5iuph0mfujj3" path="res://models/shipment_open_blue.glb" id="1_fg4ex"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0c48n"]
+size = Vector3(5.45, 0.12, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floc7"]
+size = Vector3(0.12, 1.95, 1)
+
+[node name="ShipmentOpenBlue" type="StaticBody3D"]
+
+[node name="shipment_open_blue2" parent="." instance=ExtResource("1_fg4ex")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.947041, 0)
+shape = SubResource("BoxShape3D_0c48n")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.918596, 0)
+shape = SubResource("BoxShape3D_0c48n")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.940067)
+shape = SubResource("BoxShape3D_0c48n")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.930805)
+shape = SubResource("BoxShape3D_0c48n")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0.0470406, 0.4)
+shape = SubResource("BoxShape3D_floc7")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0.0470406, -0.4)
+shape = SubResource("BoxShape3D_floc7")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.21015, 0.000345461, 0.941784)
+shape = SubResource("BoxShape3D_floc7")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 3.21015, 0.000345461, -1.06665)
+shape = SubResource("BoxShape3D_floc7")

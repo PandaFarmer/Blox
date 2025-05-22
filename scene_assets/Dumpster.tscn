@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6uyr2d46u6mb"]
+
+[ext_resource type="PackedScene" uid="uid://bhhedtoh4c1qc" path="res://models/Dumpster.glb" id="1_f731h"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8grk7"]
+points = PackedVector3Array(1, -1, 2, 1, -1, -2, -1, -1, 2, -1, -1, -2, 1, 1.1, 2, 1, 1.1, -2, -1, 1.4, 2, -1, 1.4, -2)
+
+[node name="Dumpster" type="StaticBody3D"]
+
+[node name="Dumpster" parent="." instance=ExtResource("1_f731h")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_8grk7")

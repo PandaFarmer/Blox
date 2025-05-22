@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://be3m3v0m3rnbv"]
+
+[ext_resource type="PackedScene" uid="uid://dkjiakjdq87dy" path="res://models/OilDrum.glb" id="1_l64x2"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_aefh1"]
+height = 1.02
+radius = 0.33
+
+[node name="OilDrum" type="StaticBody3D"]
+
+[node name="OilDrum" parent="." instance=ExtResource("1_l64x2")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0317612, 0)
+shape = SubResource("CylinderShape3D_aefh1")

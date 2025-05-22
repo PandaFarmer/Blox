@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c00txasr1l03h"]
+
+[ext_resource type="PackedScene" uid="uid://j5mxd64iuwmt" path="res://models/Crate.glb" id="1_ihy80"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ka32"]
+size = Vector3(2, 2, 2)
+
+[node name="Crate" type="StaticBody3D"]
+
+[node name="Crate" parent="." instance=ExtResource("1_ihy80")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4ka32")
